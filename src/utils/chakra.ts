@@ -1,10 +1,19 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, UseToastOptions } from '@chakra-ui/react';
+import { mode } from '@chakra-ui/theme-tools';
+
+export const toastOptions: UseToastOptions = {
+  position: 'top-right',
+  duration: 1000,
+  status: 'success',
+};
 
 const colorModeInLocalStorage =
-  typeof window !== 'undefined' ? window.localStorage.getItem('chakra-ui-color-mode') : 'system';
+  typeof window !== 'undefined'
+    ? window.localStorage.getItem('chakra-ui-color-mode')
+    : 'system';
 
 const config = {
-  initialColorMode: 'system',
+  initialColorMode: 'dark',
   useSystemColorMode: colorModeInLocalStorage === 'system',
 };
 
@@ -23,8 +32,10 @@ const colors = {
   },
 };
 
+const mapboxPopupCloseButtonSize = '16px';
+
 const styles = {
-  global: {
+  global: (props: any) => ({
     '.some-global-class': {
       paddingY: 2,
     },
@@ -33,7 +44,29 @@ const styles = {
       // Fix issue links wrap outside of button have ugly sharp corners
       borderRadius: 'md',
     },
-  },
+
+    // Override the react-map-box styles
+    '.mapboxgl-popup-content': {
+      backgroundColor: mode('white', 'gray.800')(props),
+      padding: '12px 17px 12px 12px',
+    },
+    '.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip': {
+      borderTopColor: mode('white', 'gray.800')(props),
+    },
+    '.mapboxgl-popup-close-button': {
+      borderRadius: '3px',
+      width: mapboxPopupCloseButtonSize,
+      height: mapboxPopupCloseButtonSize,
+      lineHeight: mapboxPopupCloseButtonSize,
+      top: '1px',
+      right: '1px',
+      outline: 'none',
+
+      '&:hover': {
+        color: 'red.400',
+      },
+    },
+  }),
 };
 
 const components = {

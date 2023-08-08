@@ -1,11 +1,15 @@
 import type { ReactNode } from 'react';
+import Head from 'next/head';
 
-import { Header } from '../Header';
-
-export const Layout = ({ children }: { children: ReactNode }) => {
+export const GeneralLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <Header />
+      <Head>
+        <title>Demo App</title>
+        <meta name="description" content="Demo app for Google Maps" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <main>{children}</main>
     </>
   );

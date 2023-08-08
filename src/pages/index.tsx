@@ -1,13 +1,20 @@
-import { Layout } from '@/components';
+import { MapView } from '@/components/MapView/MapView';
+import { Flex, GeneralLayout } from '@/components';
+import { useAtom, mapAtom } from '@/atoms';
+import { pinData } from '@/utils/pins';
 
 export default function IndexPage() {
+  const [mapViewState, setMapViewState] = useAtom(mapAtom);
+
   return (
-    <Layout>
-      <h1>Next.js Template</h1>
-      <p>
-        This is an example site to demonstrate how to use{' '}
-        <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
-      </p>
-    </Layout>
+    <GeneralLayout>
+      <Flex width="100vw" height="100vh">
+        <MapView
+          data={pinData}
+          viewState={mapViewState}
+          onChange={setMapViewState}
+        />
+      </Flex>
+    </GeneralLayout>
   );
 }

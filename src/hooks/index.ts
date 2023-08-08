@@ -1,5 +1,5 @@
-export { useSession } from 'next-auth/react';
+export { useColorMode, useColorModeValue } from '@chakra-ui/react';
 export { useRouter } from 'next/router';
 export { default as useSWR } from 'swr';
 
-export * from './useAuth';
+export * from 'react-use';
