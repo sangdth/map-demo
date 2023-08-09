@@ -14,9 +14,9 @@ export const getCookieDomain = () => {
 export const COOKIE_DOMAIN = getCookieDomain();
 
 export const DEFAULT_VIEWSTATE = {
-  latitude: 65.53792617626561,
-  longitude: 26.203166775988734,
-  zoom: 5,
+  latitude: 61.75303390831198,
+  longitude: 24.51092842069511,
+  zoom: 8,
   bearing: 0,
   pitch: 0,
   padding: { top: 0, bottom: 0, left: 0, right: 0 },

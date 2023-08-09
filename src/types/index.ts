@@ -38,15 +38,18 @@ export type Crs = {
     name: string;
   };
 };
+
+export type Coordinates = [number, number]; // [long, lat]
+
 export type Geography = {
   type: string;
   crs: Crs;
-  coordinates: [number, number]; // [long, lat]
+  coordinates: Coordinates;
 };
 
 export type PinData = {
-  id?: string;
-  location?: Partial<Geography> | null;
+  id: string;
+  location: Partial<Geography>;
   label?: string;
   description?: string;
 };

@@ -1,8 +1,8 @@
 import { IconButton, type IconButtonProps } from '@chakra-ui/react';
-import { Marker as MapboxMarker } from 'react-map-gl';
+import { Marker as MapboxMarker, useMap } from 'react-map-gl';
+import type { Coordinates, PinData } from '@/types';
 import { useColorModeValue } from '@/hooks';
 import { areEqual } from '@/utils/helpers';
-import type { PinData } from '@/types';
 import { PinIcon } from '@/icons';
 import { memo } from 'react';
 
@@ -23,6 +23,13 @@ export const Marker = memo(
   ({ data, colorScheme = 'purple', icon, onClick }: PinProps) => {
     const [longitude, latitude] = data?.location?.coordinates ?? [];
 
+    const { current: map } = useMap();
+
+    const isMarkerInViewport = (coordinates: Coordinates) => {
+      const bounds = map?.getBounds();
+      return bounds?.contains(coordinates);
+    };
+
     const iconColor = useColorModeValue(
       `${colorScheme}.400`,
       `${colorScheme}.300`
@@ -34,7 +41,7 @@ export const Marker = memo(
       }
     };
 
-    if (!longitude || !latitude) {
+    if (!longitude || !latitude || !isMarkerInViewport([longitude, latitude])) {
       return null;
     }
 

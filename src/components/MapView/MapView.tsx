@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavigationControl, Map, Popup, useMap } from 'react-map-gl';
+import { NavigationControl, Map, Popup } from 'react-map-gl';
 import {
   Box,
   Flex,
@@ -76,10 +76,9 @@ export const MapView = ({ viewState, data, onChange }: MapViewProps) => {
       >
         <NavigationControl position="bottom-right" style={navControlStyles} />
 
-        {data &&
-          data.map((o) => (
-            <Marker key={o.id} data={o} onClick={() => handlePinOnClick(o)} />
-          ))}
+        {data?.map((o) => (
+          <Marker key={o.id} data={o} onClick={() => handlePinOnClick(o)} />
+        ))}
 
         {popupInfo && popupLongitude && popupLatitude && (
           <Popup
