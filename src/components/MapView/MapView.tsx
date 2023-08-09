@@ -72,7 +72,6 @@ export const MapView = ({ viewState, data, onChange }: MapViewProps) => {
         mapboxAccessToken={secret?.mapboxAccessToken}
         onMove={(event) => setLocalViewport(event.viewState)}
         mapStyle={`mapbox://styles/mapbox/${colorMode}-v9`}
-        // onContextMenu={(event) => console.log(event)} // eslint-disable-line
       >
         <NavigationControl position="bottom-right" style={navControlStyles} />
 

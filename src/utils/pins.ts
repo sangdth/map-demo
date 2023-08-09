@@ -67,6 +67,4 @@ for (let i = 0; i < 1000; i++) {
   generatedData.push({ id, label, location: { coordinates } });
 }
 
-console.log({ generatedData });
-
 export const pinData: PinData[] = generatedData;
