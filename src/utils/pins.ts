@@ -57,7 +57,7 @@ const finlandBounds = {
 const generatedData: PinData[] = [];
 const randomNames = generateRandomNames(randomFruits, randomColors);
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 10000; i++) {
   const id = uuidv4();
   const label = randomNames[Math.floor(Math.random() * randomNames.length)];
   const long = getRandomFloat(finlandBounds.minLong, finlandBounds.maxLong);
